@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Addition;
+use App\Models\Attendance;
 use App\Models\Branch;
 use App\Models\Calendar;
 use App\Models\Deduction;
@@ -21,6 +22,7 @@ use App\Models\Position;
 use App\Models\Request;
 use App\Models\Shift;
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -98,6 +100,31 @@ class DatabaseSeeder extends Seeder
                 'start_date' => now()->format('Y-m-d'),
                 'end_date' => null,
             ]);
+
+            $currentDate = CarbonImmutable::now();
+            $startDate = $currentDate->startOfMonth();
+
+            $days = $currentDate->diffInDays($startDate);
+            $attendanceTypes = ['on_time', 'late', 'missed'];
+
+            for ($i = 0; $i < $days; $i++) {
+                if(fake()->boolean){
+                    Attendance::create([
+                        'employee_id' => $employee->id,
+                        'date' => $startDate->format('Y-m-d'),
+                        'status' => 'on_time',
+                        'sign_in_time' => $employee->activeShift()->start_time,
+                        'sign_off_time' => $employee->activeShift()->end_time,
+                    ]);
+                } else {
+                    Attendance::create([
+                    'employee_id' => $employee->id,
+                    'date' => $startDate->format('Y-m-d'),
+                    'status' => 'missed',
+                    ]);
+                }
+                $startDate = $startDate->addDay();
+            }
         }
 
         // Assign Managers to branch #1 and department #1

@@ -16,7 +16,7 @@ This project is built using Laravel 10, Vue 3, and Inertia.JS.
 ### Pre-requisites
 - PHP 8.2
 - Composer
-- Database Server (recommended: PostgreSQL)
+- PostgreSQL Server (not tested on MySQL)
 - Cron (for scheduled tasks)
 - npm
 
