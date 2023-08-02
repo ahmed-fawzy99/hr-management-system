@@ -18,6 +18,7 @@ import TextInput from "@/Components/TextInput.vue";
 import PlusIcon from "@/Components/Icons/PlusIcon.vue";
 import {__} from "@/Composables/useTranslations.js";
 import {calendar_types} from "@/Composables/useCalendarItemTypes.js";
+import dayjs from "dayjs";
 
 const form = useForm({
     date: '',
@@ -28,7 +29,7 @@ const form = useForm({
 const submitForm = () => {
     Object.keys(form.date).forEach(function (key) {
         if (form.date[key] && !/^\d{4}-\d{2}-\d{2}$/.test(form.date[key])){
-            form.date[key] = form.date[key].toISOString().split('T')[0]
+            form.date[key] = dayjs(form.date[key]).format('YYYY-MM-DD');
         }
     });
     form.post(route('calendars.store'), {

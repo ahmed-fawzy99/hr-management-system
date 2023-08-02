@@ -15,6 +15,7 @@ import Card from "@/Components/Card.vue";
 import {inject} from "vue";
 import {__} from "@/Composables/useTranslations.js";
 import ToolTip from "@/Components/ToolTip.vue";
+import dayjs from "dayjs";
 
 const props = defineProps({
     departments: Object,
@@ -65,7 +66,7 @@ const departmentForm = useForm({
 });
 
 const submit = () => {
-    form.hired_on = form.hired_on.toISOString().split('T')[0];
+    form.hired_on = dayjs(form.hired_on).format('YYYY-MM-DD');
     form.post(route('employees.store'), {
         preserveScroll: true,
         onError: () => {

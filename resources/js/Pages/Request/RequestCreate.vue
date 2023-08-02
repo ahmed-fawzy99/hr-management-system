@@ -32,9 +32,10 @@ watch(() => form.type, (value) => {
 const submitForm = () => {
     Object.keys(form.date).forEach(function (key) {
         if (form.date[key] && !/^\d{4}-\d{2}-\d{2}$/.test(form.date[key])){
-            form.date[key] = form.date[key].toISOString().split('T')[0]
+            form.date[key] = dayjs(form.date[key]).format('YYYY-MM-DD');
         }
     });
+    console.log(form.date);
     form.post(route('requests.store'), {
         preserveScroll: true,
         onError: () => {
