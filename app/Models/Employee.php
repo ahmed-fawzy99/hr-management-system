@@ -204,7 +204,7 @@ class Employee extends Authenticatable
 
         // Calculations from the start of the month until today.
         $holidaysCountSoFar = $commonServices->countHolidays($this->hired_on, [$curYear, $curMonth, 1, $curYear, $curMonth, $curDay]);
-        $workingDaysSoFar = $curDay - $holidaysCountSoFar -
+        $workingDaysSoFar = $curDay - 1 -$holidaysCountSoFar - // -1 to exclude today
             $commonServices->calcOffDays(json_decode($globalSettings->weekend_off_days), $this->hired_on, [$curYear, $curMonth, 1, $curYear, $curMonth, $curDay]);
 
         // Calculations for the entire year until today
