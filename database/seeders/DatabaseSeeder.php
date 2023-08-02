@@ -42,10 +42,18 @@ class DatabaseSeeder extends Seeder
         $root = Employee::factory()->create([
             'name' => 'Super Root',
             'email' => 'super@root.com',
-            'phone' => '01001095076',
+            'phone' => '01001005000',
             'national_id' => '29904268801154',
             'hired_on' => '2023-01-25',
-            'password' => '$2y$10$7BMn8WlpLkUB64fCCCVCvuFbqp4dO34dLL/a7MjMdoITz0FOIOZ.G',
+            'password' => '$2y$10$7BMn8WlpLkUB64fCCCVCvuFbqp4dO34dLL/a7MjMdoITz0FOIOZ.G', // password
+        ]);
+        $emp = Employee::factory()->create([
+            'name' => 'Super Root',
+            'email' => 'spicy@pillow.com',
+            'phone' => '01001005001',
+            'national_id' => '29904268801155',
+            'hired_on' => '2023-01-25',
+            'password' => '$2y$10$7BMn8WlpLkUB64fCCCVCvuFbqp4dO34dLL/a7MjMdoITz0FOIOZ.G', // passwprd
         ]);
 
         Employee::factory(14)->create();

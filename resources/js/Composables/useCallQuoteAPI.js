@@ -33,7 +33,7 @@ export function CallQuoteAPI (quote){
         lastApiCallTimestamp.value = Date.now();
         localStorage.setItem('lastApiCallTimestamp', lastApiCallTimestamp.value);
     } else {
-        quote.value = JSON.parse(localStorage.getItem('quote'))[0];
+        quote.value = JSON.parse(localStorage.getItem('quote'))?.[0];
     }
 
 }

@@ -5,6 +5,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import {Head, Link, useForm} from '@inertiajs/vue3';
+import {onMounted, ref} from "vue";
 
 defineProps({
     canResetPassword: {
@@ -15,9 +16,13 @@ defineProps({
     },
 });
 
+onMounted(() => {
+    document.documentElement.classList.remove('dark');
+});
+
 const form = useForm({
-    email: '',
-    password: '',
+    email: ref('super@root.com'),
+    password: ref('password'),
     remember: false,
 });
 
@@ -37,6 +42,13 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
+            <div class="flex justify-center font-bold py-4">
+                This is a test app. Data is reset every 24 hours.
+            </div>
+            <div class="flex flex-col justify-center mb-4 text-sm">
+                <p class="mb-2">Admin -> email: '<b>super@root.com</b>' Password: '<b>password</b>' </p>
+                <p class="mb-2">Employee -> email: '<b>spicy@pillow.com</b>' Password: '<b>password</b>' </p>
+            </div>
             <div>
                 <InputLabel for="email" value="Email"/>
 
@@ -54,7 +66,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password"/>
+                <InputLabel for="password" value="Password" />
 
                 <TextInput
                     id="password"

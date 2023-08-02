@@ -3,7 +3,7 @@ All-in-one Single-Page-Application to manage employee attendance, leaves, payrol
 and organize your organization's branches and departments.
 
 # Live Demo
-[https://hrs.ahmeddeghady.com](https://hrs.ahmeddeghady.com)
+[https://hr-system.ahmeddeghady.com](https://hr-system.ahmeddeghady.com)
 >Note: The data is reset every 24 hours.
 
 # Video Demo

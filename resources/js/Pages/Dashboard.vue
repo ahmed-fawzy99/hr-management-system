@@ -253,7 +253,7 @@ onMounted(() => {
                                     {{ employee_stats['hoursDifferenceSoFar'] + __('h') }}</p>
                                 <ProgressBar class="col-span-3"
                                              :percentage="employee_stats['hoursDifferenceSoFar']"
-                                             :text="employee_stats['hoursDifferenceSoFar'] === 0 ? '' :Math.abs(employee_stats['hoursDifferenceSoFar']) + ' ' + __('Hours') +' ' + (employee_stats['hoursDifferenceSoFar'] > 0 ? __('extra') : __('late'))"
+                                             :text="employee_stats['hoursDifferenceSoFar'] === 0 ? '' :Math.abs(employee_stats['hoursDifferenceSoFar']).toFixed(2) + ' ' + __('Hours') +' ' + (employee_stats['hoursDifferenceSoFar'] > 0 ? __('extra') : __('late'))"
                                              :color="employee_stats['hoursDifferenceSoFar'] > 0 ? 'bg-green-500' : 'bg-red-500' "/>
                             </div>
                         </div>
