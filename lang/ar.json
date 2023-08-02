@@ -1,0 +1,667 @@
+{
+    "Yes": "نعم",
+    "No": "لا",
+    "Nothing": "لا شيء",
+    "Gender": "النوع",
+    "Male": "ذكر",
+    "Female": "أنثى",
+    "Years": "سنة",
+    "Pending": "قيد الانتظار",
+    "Rejected": "مرفوض",
+    "Approved": "مقبول",
+    "Payment": "مدفوعات",
+    "Leave": "إجازة",
+    "Complaint": "شكوى",
+    "Other": "أخرى",
+    "Select Day": "حدد اليوم",
+    "Request Removed!": "تم حذف الطلب بنجاح!",
+    "Search for a branch": "ابحث عن فرع",
+    "Employees": "الموظفين",
+    "Archived Employees": "الموظفين المؤرشفين",
+    "Current Calendar": "التقويم الحالي",
+    "Calendar": "التقويم",
+    "National ID": "رقم الهوية الوطنية",
+    "Sign Off Time": "وقت تسجيل الخروج",
+    "Notes": "ملحوظات",
+    "Select Time...": "حدد الوقت ...",
+    "Confirm Attendance": "تأكيد الحضور",
+    "Attendance Dashboard": "لوحة معلومات الحضور",
+    "On Time": "بموعده",
+    "Late": "متأخر",
+    "Absent": "غائب",
+    "Your Attendance This Month (:attendance)": "حضورك هذا الشهر (: الحضور)",
+    "Attendance": "الحضور",
+    "Attendance View": "عرض حضور اليوم",
+    "Delete Day Attendance": "حذف حضور اليوم",
+    "Phone": "الهاتف",
+    "Days": "أيام",
+    "Day": "يوم",
+    "Absence": "غياب",
+    "Absented": "غائب",
+    "Off Day!": "إجازة!",
+    "Notice!": "ملحوظة!",
+    "Incomplete Attendance!": "حضور غير مكتمل!",
+    "This day is off (Weekend or a Holiday). No attendance for this day": "هذا اليوم إجازة (نهاية الأسبوع أو عطلة)، لا يوجد حضور",
+    "The selected day's attendance has been already taken. You are now editing the previously taken attendance.": "تم أخذ الحضور لهذا اليوم، أنت اﻵن تعدل على حضور ذلك اليوم",
+    "Some employees have taken their attendances here while others did not. Any changes you make in this page will overwrite the records here.": "بعض الموظفين أخذوا حضورهم بنفسهم بينما لم يفعل اﻵخرون. أية تغييرات تحدثها في هذه الصفحة سوف تمحو أي بيانات موجودة هنا.",
+    "Records with the sign ✍️ denotes that this employee has taken their attendance but hasn't signed off yet (incomplete attendance).": "السجلات ذات علامة '✍️' تعني أن هذا الموظف أخذ حضوره ولكنه لم يسجل انصرافه بعد (حضور غير مكتمل)",
+    "Records with the sign ✅ denotes that this employee has taken their attendance and has signed off (complete attendance).": "السجلات ذات العلامة '✅' تعني أن هذا الموظف أخذ حضوره وسجل انصرافه (حضور مكتمل)",
+    "Haven't Sign Off Yet": "لم يسجل الانصراف بعد",
+    "Attended Late": "حضر متأخراً",
+    "Extra Hours are rewarded, while negative hours will result in deduction..": "تتم مكافأة الساعات الإضافية ، بينما ستؤدي الساعات السالبة إلى خصم ..",
+    "Worked :worked of :of Hours": "عملت :worked :of ساعة",
+    "Remaining Until Month's End": "المتبقي حتى نهاية الشهر",
+    "Hours": "ساعات",
+    "Your Attendance This Year": "حضورك هذا العام",
+    "Attended :attended from :from": "حضر :attended من :from",
+    "Attended": "حضر",
+    "Employee name (ID)": "اسم الموظف (الرقم التعريفي)",
+
+    "Weekend Off Days": "أيام عطلة نهاية الأسبوع",
+    "Your Total National Holidays Days": "إجمالي أيام العطل الوطنية",
+    "If there is anything wrong in the presented data above please": "إذا كان هناك أي خطأ في البيانات المقدمة أعلاه من فضلك",
+    "Submit a Complaint Here": "قدم شكوى هنا",
+    "Attendance List for :day": "قائمة الحضور لـ :day",
+    "Edit A Branch": "تعديل فرع",
+    "Employee": "الموظف",
+    "Notes?": "ملحوظات؟",
+    "Note...": "ملحوظة...",
+    "Attendance List": "قائمة الحضور",
+    "Filter by Date:": "تصفية حسب التاريخ:",
+    "Date": "تاريخ",
+    "Total Attendance": "إجمالي الحضور",
+    "Attended On Time": "حضر في الوقت المحدد",
+    "Add A Branch": "أضف فرع",
+    "Branch Name": "اسم الفرع",
+    "Joseph Tito Branch": "فرع جوزيف تيتو",
+    "Branch Address": "عنوان فرع",
+    "Department Phone": "هاتف القسم",
+    "Department Email": "البريد الإلكتروني للقسم",
+    "Manager": "مدير",
+    "Branch Edit": "تحرير الفرع",
+    "Delete Branch": "حذف الفرع",
+    "Edit Branch": "تعديل فرع",
+    "Branches": "الفروع",
+    "ID": "الرقم التعريفي",
+    "Shift Payment Multiplier": "مٌضاعف الأداء",
+    "Name": "الإسم",
+    "Progress So Far: :hoursDifference Hours": "النتائج حتى الآن: :hoursDifference ساعة",
+    "Email": "البريد الإلكتروني",
+    "Address": "العنوان",
+    "Branch Details": "تفاصيل الفرع",
+    "Modify Branch Data": "تعديل بيانات الفرع",
+    "No Manager": "لا يوجد مدير",
+    "Number of Employees": "عدد الموظفين",
+    "Branch Employees": "موظفو الفرع",
+    "of": "من",
+    "Absented :absented of :of": "غاب :absented من :of",
+    "Something's Wrong?": "شيء ما خاطيء؟",
+    "Status": "الحالة",
+    "Your Year's Data": "بياناتك لهذا العام",
+    "Type": "النوع",
+    "Title": "العنوان",
+    "Close": "غلق",
+    "Holidays Notice:": "إشعار الإجازات:",
+    "Choose a Request Type": "اختر نوع الطلب",
+    "Calendar Item Update": "تحديث عنصر التقويم",
+    "Update a Calendar Item": "تحديث عنصر التقويم",
+    "Go to Attendance": "اذهب إلى جدول الحضور",
+    "Calendar Items": "عناصر التقويم",
+    "Current Calendar Items": "عناصر التقويم الحالية",
+    "Start Date": "تاريخ البدء",
+    "End Date": "تاريخ الانتهاء",
+    "Calendar Item Data": "بيانات عنصر التقويم",
+    "Modify Item Data": "تعديل بيانات العنصر",
+    "Item Info": "معلومات العنصر",
+    "Delete Item": "حذف العنصر",
+    "Welcome, :name": "مرحبًا ، :name",
+    "For": "ل",
+    "Attended:": "حضر:",
+    "Save": "حفظ",
+    "My Payrolls": "كشوف مرتباتي",
+    "Your Salary": "راتبك",
+    "Last Updated: :salary": "آخر تحديث: :salary",
+    "Quote of the day": "اقتباس اليوم",
+    "of every month": "من كل شهر",
+    "Work Days": "أيام العمل",
+    "Weekends": "عطلات نهاية الأسبوع",
+    "Holidays": "الإجازات",
+    "Calendar Item Creation": "إضافة عنصر إلى التقويم",
+    "Create a new one.": "إنشاء سجل جديد.",
+    "Day(s)": "أيام).",
+    "Hours:": "الساعات:",
+    "Initiate Request": "أنشيء الطلب",
+    "extra": "إضافي",
+    "late": "متأخر",
+    "Quick Actions": "إجراءات سريعة",
+    "Pay Day": "يوم القبض",
+    "Go To Payments": "انتقل إلى المدفوعات",
+    "My Attendance": "حضوري",
+    "h": "س",
+    "My Calendar": "تقويمي",
+    "Go to Calendar": "اذهب إلى التقويم",
+    "Contact Support": "اتصل بالدعم",
+    "Department Create": "قسم إنشاء",
+    "Add A Department": "إضافة قسم",
+    "Department Name": "اسم القسم",
+    "Sales": "مبيعات",
+    "Add Department": "اضافة قسم",
+    "Department Edit": "تحرير القسم",
+    "Delete Department": "حذف القسم",
+    "Edit Request": "تعديل الطلب",
+    "Current Departments": "الإدارات الحالية",
+    "Search for a department": "ابحث عن قسم",
+    "Modify Department Data": "تعديل بيانات القسم",
+    "Department Data": "بيانات القسم",
+    "Department Employees": "موظفو القسم",
+    "Employee Register": "سجل الموظف",
+    "Full Name": "الاسم الكامل",
+    "John Doe": "فلان الفلاني",
+    "Bank Account Number (Optional)": "رقم الحساب المصرفي (اختياري)",
+    "Hire Date": "تاريخ التوظيف",
+    "Select a Date...": "حدد التاريخ ...",
+    "Branch": "الفرع",
+    "Choose a Branch": "اختر الفرع",
+    "Departments": "الأقسام",
+    "Create a New Branch": "إنشاء فرع جديد",
+    "Data of :month": "بيانات شهر :month",
+    "Loading Quote...": "جار تحميل المقولة...",
+    "Department": "القسم",
+    "Department not listed?": "القسم غير مدرج؟",
+    "Absented:": "غاب عن:",
+    "Sprint Review": "الاجتماع نصف الشهري",
+    "Position Description": "وصف المنصب",
+    "Choose a Position": "اختر الوظيفة",
+    "Position not listed?": "المنصب غير مدرج؟",
+    "Position Name": "اسم المنصب",
+    "Previous Shifts": "الورديات السابقة",
+    "Software Engineer": "مهندس برمجيات",
+    "Position History": "تاريخ المناصب",
+    "Shift History": "تاريخ الورديات",
+    "Choose a Shift": "اختر وردية",
+    "Shift not listed?": "الوردية غير موجودة؟",
+    "Shift Name": "اسم الوردية",
+    "Current": "الوقت الحالي",
+    "Shift Start Time": "وقت بدء الوردية",
+    "The set IPs will be used to compare employee attendance's IP with it": "سيتم استخدام اﻵي بي المٌعين للمقارنة مع اﻵي بي الخاص بالموظف",
+    "This IP(s) will be used to compare employee attendance's IP with it.": "سيتم استخدام اﻵي بي المٌعين للمقارنة مع اﻵي بي الخاص بالموظف",
+    "Select a Time...": "حدد الوقت ...",
+    "No, Cancel!": "لا، إلغاء!",
+    "Edit :name Details": "تعديل بيانات :name",
+    "Description": "الوصف",
+    "Salary": "المرتب",
+    "Position": "المنصب",
+    "Choose a Permission Level": "اختر مستوى الإذن",
+    "Search": "بحث",
+    "Remote Worker": "عامل عن بعد",
+    "Add Employee": "اضافة موظف",
+    "Are you sure?": "هل أنت متأكد؟",
+    "Yes, Delete!": "نعم ، احذف!",
+    "No results": "لا يوجد نتائج",
+    "Employee Edit": "الموظف تحرير",
+    "Enable IP-Based Attendance?": "تمكين الحضور المبني على اﻵي بي؟",
+    "Delete Employee": "حذف الموظف",
+    "(list)": "(القائمة)",
+    "Find an Employee": "ابحث عن موظف",
+    "Shift": "الوردية",
+    "Organization Email": "البريد الإلكتروني للمنظمة",
+    "Employee View": "عرض الموظف",
+    "Employee View :ifAdmin": "عرض بيانات الموظف :ifAdmin",
+    "Modify Employee Data": "تعديل بيانات الموظف",
+    "Technical Info": "المعلومات الفنية",
+    "History": "تاريخ",
+    "Previous Salaries": "الرواتب السابقة",
+    "Salary History": "سجل الرواتب",
+    "default": "القيمة الافتراضية",
+    "Previous Positions": "المناصب السابقة",
+    "Remote Worker?": "عامل عن بعد؟",
+    "Time Zone": "المنطقة الزمنية",
+    "Organization Data": "بيانات المنظمة",
+    "Organization Details": "تفاصيل المنظمة",
+    "Modify Organization Data": "تعديل بيانات المنظمة",
+    "Warning!": "تحذير!",
+    "Organization Name": "اسم المنظمة",
+    "You won't be able to revert this!": "لن تتمكن من التراجع عن هذا الإجراء!",
+    "Multiplier": "مٌضاعف الأداء",
+    "Please choose a timezone from the list.": "الرجاء اختيار منطقة زمنية من القائمة.",
+    "Payroll Day": "يوم كشف الرواتب",
+    "from outside the organization. Thus, the attendance will be discarded": "من خارج المنظمة. وبالتالي ، سيتم تجاهل الحضور",
+    "You can turn this option off on this page": "يمكنك إيقاف تشغيل هذا الخيار من خلال هذه الصفحة",
+    "Permissions Level": "مستوى الأذن",
+    "Organization Address": "عنوان المنظمة",
+    "114 Juhayna Sq. 6th of October City, Giza, Egypt": "114 ميدان جهينة مدينة السادس من أكتوبر ، الجيزة ، مصر",
+    "Absence Limit": "حد الغياب",
+    "Create a New Shift": "أضف وردية جديدة",
+    "Saturday": "السبت",
+    "Monday": "الاثنين",
+    "Very Poor": "ضعيف جداً",
+    "Wednesday": "الأربعاء",
+    "Issued for Employee": "صادر للموظف",
+    "Extra Hours": "عدد ساعات العمل الإضافية",
+    "Extra Hours Compensation": "مكافأة ساعات العمل الإضافية",
+    "Metric Criterion": "معيار المقياس",
+    "Metric View": "عرض المقياس",
+    "Weight": "وزن",
+    "Step": "خطوة",
+    "Add Metric": "إضافة مقياس",
+    "Metric Removed Successfully": "تمت إزالة المقياس بنجاح",
+    "Update Metric": "تحديث المقياس",
+    "Remove Metric": "إزالة المقياس",
+    "Metrics": "المقاييس",
+    "Current Metrics": "المقاييس الحالية",
+    "step": "خطوة",
+    "Metric Weight": "وزن المقياس",
+    "Metric Criteria": "معايير المقياس",
+    "Neutral": "محايد",
+    "Metric Step": "خطوة المقياس",
+    "Metric Details": "معلومات المقياس",
+    "For Example, if the step is 5%:": "على سبيل المثال ، إذا كانت الخطوة 5٪:",
+    "Good": "جيد",
+    "5% increase from Very Good, 15% increase from Neutral.": "5٪ زيادة من جيد جدا، 15٪ زيادة من محايد.",
+    "Very Good": "جيد جدًا",
+    "Excellent": "ممتاز",
+    "Calculation": "طريقة الحساب",
+    "And similarly for the decrease:": "وبالمثل بالنسبة للنقص:",
+    "Reimbursements": "تعويضات",
+    "Weighted Points": "النقاط الموزونة",
+    "Friday": "الجمعة",
+    "5% increase from Neutral.": "5٪ زيادة عن محايد.",
+    "Performance Multiplier": "مُضاعف الأداء",
+    "Payroll Review": "مراجعة كشف الراتب",
+    "Metric Create": "إنشاء مقياس",
+    "Base Salary": "الراتب الاساسي",
+    "Invoice Currency": "عملة الفاتورة",
+    "Currency": "العملة",
+    "Additions": "الاضافات",
+    "Criteria": "معايير",
+    "Amount": "كمية",
+    "Commissions": "عمولات",
+    "Total": "المجموع",
+    "This Value is obtained from Organization's settings.": "تم الحصول على هذه القيمة من إعدادات المنظمة",
+    "Extremely Poor": "ضعيف جدا",
+    "/Hour": "/ساعة",
+    "Hours * :ex_rate /hr": "ساعات * :ex_rate / ساعة",
+    "Rewards": "المكافآت",
+    "Incentives": "حوافز",
+    "Shift Differentials": "بدلات الوردية",
+    "Edit Data": "تعديل البيانات",
+    "Organization Public IP Address(es) - Separate multiple values by commas": "آي بي المنطمة - يمكنك إضافة عدة قيم مع الفصل بينهم بفاصلة ','",
+    "Income Tax": "ضريبة الدخل",
+    "Attendance Data": "بيانات الحضور",
+    "Negative Hours": "عدد ساعات العمل الناقصة",
+    "Negative Hours Penalty": "عقوبة الساعات السلبية",
+    "Hour": "ساعة",
+    "Hours * :ng_rate /hr": "ساعات * :ng_rate / ساعة",
+    "Social Security Contributions": "اشتراكات الضمان الاجتماعي",
+    "Health Insurance": "تأمين صحي",
+    "Benefits": "فوائد",
+    "Union Fees": "رسوم الاتحاد",
+    "Employee Evaluation": "تقييم الموظف",
+    "Please fill the following evaluation matrix:": "يرجى ملء مصفوفة التقييم التالية:",
+    "Payroll ID": "رقم الراتب التعريفي",
+    "weight": "الوزن",
+    "Poor": "ضعيف",
+    "What is Metric Step?": "ما هي خطوة المقياس؟",
+    "Tuesday": "الثلاثاء",
+    "-5% decrease from Very Poor, -15% decrease from Neutral.": "- انخفاض بنسبة 5٪ من ضعيف جدا ، و -15٪ انخفاض من محايد.",
+    "This value is obtained from the current employee's shift multiplier, which is :SD": "تم الحصول على هذه القيمة من مٌضاعف قيمة الوردية الحالية للموضف، والتي هي :SD",
+    "Based on employee's performance metrics filled,": "",
+    "Attendance :msg": ":msg",
+    "as a performance multiplier.": "كمضاعف للأداء.",
+    "Your Performance Multiplier": "مضاعف أدائك",
+    "Grand Total": "المجموع الإجمالي",
+    "Next Payroll": "كشف المرتب التالي",
+    "Confirm Payroll": "تأكيد كشوف المرتبات",
+    "Payrolls": "كشوف المرتبات",
+    "Filter by Month": "تصفية حسب الشهر",
+    "Filter by Status": "تصفية حسب الحالة",
+    "All": "الجميع",
+    "Paid": "مدفوع",
+    "No data was found in the records.": "لا توجد أية بيانات.",
+    "Employee Name": "اسم الموظف",
+    "Total Amount": "المبلغ الإجمالي",
+    "Create a Request": "أنشيء طلب",
+    "Position Create": "إنشاء منصب",
+    "Review Again": "مراجعة مرة أخرى",
+    "Mark as Pending": "تعليق الكشف",
+    "Update your account's profile information and email address": "حدّث معلومات ملفّك الشخصي وعنوان بريدك الإلكتروني",
+    "You can approve it now.": "يمكنك الموافقة عليه الآن.",
+    "Total Deductions": "إجمالي الخصومات",
+    "Total Additions": "إجمالي الإضافات",
+    "Total Payable": "إجمالي المدفوعات",
+    "Saved": "تم الحفظ",
+    "Payroll Details": "تفاصيل كشف الراتب",
+    "Previous Payroll": "كشف المرتب السابق",
+    "Not Reviewed": "لم تٌراجع",
+    "Position Details": "تفاصيل المنصب",
+    "Add A Position": "أضف منصب",
+    "Add Position": "أضف الوظيفة",
+    "Formula": "المعادلة",
+    "Delete Position": "حذف الوظيفة",
+    "Positions": "المناصب",
+    "Current Positions": "المناصب الحالية",
+    "Search for a position": "ابحث عن وظيفة",
+    "reject": "رفض",
+    "Request Create": "إنشاء طلب",
+    "Position Employees": "موظفو المنصب",
+    "Update Password": "تطوير كلمة السر",
+    "Current Password": "كلمة السر الحالية",
+    "New Password": "كلمة المرور الجديدة",
+    "Confirm Password": "تأكيد كلمة المرور",
+    "Shift Create": "إنشاء وردية",
+    "Profile Information": "معلومات الملف الشخصي",
+    "Click here to re-send the verification email": "انقر هنا لإعادة إرسال رسالة التحقق",
+    "Error Creating Request": "خطأ في إنشاء الطلب",
+    "Request Created Successfully": "تم إنشاء الطلب بنجاح",
+    "Request #:id Data": "بيانات طلب #:id",
+    "Delete Request": "حذف الطلب",
+    "Message": "الرسالة",
+    "I will be absent for 3 days because I'm sick.": "سأتغيب لمدة 3 أيام لأنني مريض.",
+    "Requests": "الطلبات",
+    "Current Requests": "الطلبات الحالية",
+    "Created By": "أُنشيء من قِبل",
+    "N/A": "غير متاح",
+    "Take Attendance": "تسجيل الحضور",
+    "Which day should the salaries be paid on. Payrolls will be generated automatically that day on 00:00.": "اليوم الذي يجب فيه دفع المرتبات. سيتم إنشاء كشوف المرتبات تلقائياً في هذا اليوم في منتصف الليل.",
+    "The generated payrolls account for the previous month's work, from day 1 until the end of the previous month.": "الكشوف المنشأة تلقائياً ستحتسب المرتبات بناءاً على بيانات الشهر الماضي، من يوم 1 حتى آخر يوم في الشهر.",
+    "Quick Pay?": "الدفع السريع؟",
+    "Use this option if you only want to pay the salary without any additions, deductions or evaluations.": "قم باختيار هذه الخاصية إذا كنت فقط تريد دفع المرتب بدون أي زيادة أو نقصان أو تقييم.",
+    "Send Email to employee with this payroll details after confirming this payroll.": "أرسل بريد إلكتروني إلى الموظف ببيانات كشف المرتب بعد تأكيد هذا الكشف.",
+    "IDs of the branches and/or departments that this employee manages, if any.": "الأرقام التعريفية للفروع أو/و الأقسام التي يديرها هذا الموظف، إن وجدوا.",
+    " this request?": "هذا الطلب؟",
+    "Error Updating Request Status": "خطأ في تحديث حالة الطلب",
+    "Request Status Updated Successfully": "تم تحديث حالة الطلب بنجاح",
+    "Request Data": "طلب البيانات",
+    "Request Info": "بيانات الطلب",
+    "Approve Request": "الموافقة على الطلب",
+    "approve": "موافق",
+    "Reviewed?": "تمت مراجعته؟",
+    "Shift Created Successfully": "تم إنشاء الوردية بنجاح",
+    "Edit A Position": "تعديل منصب",
+    "This Payroll Has been Reviewed.": "تمت مراجعة هذا الكشف.",
+    "Add A Shift": "أضف وردية",
+    "Action": "إجراء",
+    "Employee name": "اسم الموظف",
+    "Sign In Time": "وقت تسجيل الدخول",
+    "Compensation Hours are the hours you have worked more/less than the required hours": "ساعات التعويض هي الساعات التي عملت فيها أكثر / أقل من الساعات المطلوبة",
+    "Remote Workers can take attendance anywhere, not necessarily from the organization": "يمكن للعاملين عن بُعد أخذ الحضور من أي مكان وليس بالضرورة من داخل المنظمة",
+    "if ip-based attendance is enabled from the organization settings": "إذا كان أخذ الحضور بواسطة اﻵي بي مُفعل من إعدادات المنظمة",
+    "The final numbers are cleared and accounted in the payroll by the end of the month.": "يتم تسوية الأرقام النهائية وحسابها في كشوف المرتبات بحلول نهاية الشهر.",
+    "Your Total Weekend Days Off This Year": "إجمالي أيام عطلة نهاية الأسبوع هذه السنة",
+    "Your Total Off Days This Year (Weekends + Holidays)": "إجمالي أيام إجازتك هذا العام (عطلات نهاية الأسبوع + الإجازات)",
+    "Select a Date..": "حدد التاريخ ..",
+    "El-Nozha, Cairo, Egypt": "النزهة ، القاهرة ، مصر",
+    "Add Branch": "اضافة فرع",
+    "Current Branches": "الفروع الحالية",
+    "Branch Data": "بيانات الفرع",
+    "Basic Info": "معلومات أساسية",
+    "Search for a user": "ابحث عن مستخدم",
+    "Add Items to Calendar": "أضف عناصر إلى التقويم",
+    "Select Date...": "حدد تاريخ...",
+    "Calendar Item Details": "تفاصيل عنصر التقويم",
+    "Dashboard": "لوحة القيادة",
+    "Days Remaining": "الأيام المتبقية",
+    "Your Attendance This Month": "حضورك هذا الشهر",
+    "Go To Requests": "انتقل إلى الطلبات",
+    "Choose an Employee": "اختر موظف",
+    "Department Details": "تفاصيل القسم",
+    "Add a New Employee": "إضافة موظف جديد",
+    "114 Joseph Tito, El-Nozha, Cairo, Egypt.": "114 جوزيف تيتو ، النزهة ، القاهرة ، مصر.",
+    "Branch not listed?": "الفرع غير مدرج؟",
+    "Choose a Department": "اختر القسم",
+    "departmentModal": "القسم",
+    "Create a New Department": "أنشئ قسمًا جديدًا",
+    "Responsible for designing and developing software solutions.": "مسؤول عن تصميم وتطوير الحلول البرمجية.",
+    "Day Shift": "وردية نهارية",
+    "Shift Employees": "موظفين الوردية",
+    "Edit Department": "تعديل قسم",
+    "Hour Compensation": "تعويض الساعات",
+    "Take/Edit Attendance": "أخذ / تعديل الحضور",
+    "Start Time": "وقت البدء",
+    "End Time": "وقت النهاية",
+    "Starting From": "بدايةً من",
+    "Ending At": "إنتهاءاً بـ",
+    "Retake/Update Attendance": "إعادة تسجيل / تحديث الحضور",
+    "Shift Editing Successfully": "تم تعديل الوردية بنجاح",
+    "Note: This page overwrites employees manually registered attendance": "ملاحظة: هذه الصفحة لديها الصلاحية لمحو أو تعديل الحضور المسجل يدويًا للموظفين",
+    "Shifts": "الورديات",
+    "Create a Calendar Item": "إنشاء عنصر تقويم",
+    "Create a New Item": "إنشاء عنصر جديد",
+    "Create a New Position": "أضف منصباً جديد",
+    "Date (Range selection is available)": "التاريخ (متاح تحديد عدة أيام متواصلة)",
+    "Delete Shift": "حذف الوردية",
+    "Edit Shift": "تعديل الوردية",
+    "Loading Author...": "جار تحميل صاحب المقولة ...",
+    "⚠️ Means there this page has registered attendances recorded, but this record is not recorded and needs to be filled": "⚠️ يعني هناك أن هذه الصفحة فيها حضورات مسجلة ، لكن هذا الحضور المسجل أمامه علامة التعجب غير مسجلة وتحتاج إلى الملء",
+    "Modify Shift Data": "تعديل بيانات الوردية",
+    "Number of Overtime/Undertime Hours (so far).": "عدد الساعات الإضافية/المتأخرة (حتى اﻵن)",
+    "Payment Multiplier": "مٌضاعف الدفع",
+    "Shift Data": "بيانات الوردية",
+    "This value will be accounted for in the payroll, resulting in a reward or a penalty.": "سيتم احتساب هذه القيمة في كشف المرتب، مما يؤدي إلى مكافأة أو خصم.",
+    "Today is off! 🕺🕺": "اليوم إجازة! 🕺🕺",
+    "Employee Removed Successfully!": "تمت إزالة الموظف بنجاح!",
+    "Search for an Employee": "ابحث عن موظف",
+    "Search for an archived Employee": "ابحث عن موظف مؤرشف",
+    "Hired On": "عٌيّن في",
+    "Released On": "رحل في",
+    "Processed Payroll.": "كشف مكتمل.",
+    "This payroll has been reviewed and paid successfully.": "تمت مراجعة ودفع هذا المرتب بنجاح.",
+    "Modify Data": "تعديل البيانات",
+    "Click Here To See Salary History": "انقر هنا للاطلاع على سجل الرواتب",
+    "Click Here To See Positions History": "انقر هنا لمشاهدة تاريخ المناصب",
+    "This is the timezone that will be used to calculate the time related data in the application.": "هذه هي المنطقة الزمنية التي سيتم استخدامها لحساب البيانات المتعلقة بالوقت في التطبيق.",
+    "Income Tax Percentage": "نسبة ضريبة الدخل",
+    "Sunday": "الأحد",
+    "Add A Metric": "أضف مقياسًا",
+    "How effectively did the employee perform their duties and responsibilities?": "ما مدى فعالية أداء الموظف لواجباته ومسؤولياته؟",
+    "criteria": "معايير",
+    "criterion": "المعيار",
+    "Actions": "إجراءات",
+    "Edit": "تعديل",
+    "Basic Data": "البيانات الأساسية",
+    "Due Date": "تاريخ الاستحقاق",
+    "The following values are calculated based on the base salary value and currency.": "يتم حساب القيم التالية بناءً على قيمة الراتب الأساسي والعملة.",
+    "There are no extra hours this month.": "لا توجد ساعات إضافية هذا الشهر.",
+    "Deductions": "الخصومات",
+    "The following matrix will be used to determine the performance multiplier.": "سيتم استخدام المصفوفة التالية لتحديد مضاعف الأداء.",
+    "You can override the multiplier value by entering a value in the input field below.": "يمكنك تجاوز قيمة المضاعف بإدخال قيمة في حقل الإدخال أدناه.",
+    "This value is a percentage that is applied to the base salary. Default value is 1 (no changes).": "هذه القيمة هي نسبة يتم تطبيقها على الراتب الأساسي. القيمة الافتراضية هي 1 (لا توجد تغييرات).",
+    "Based on the evaluation matrix above, the system recommends": "بناءً على مصفوفة التقييم أعلاه ، يوصي النظام بما يلي",
+    "(Base Salary * Performance Multiplier) + Additions - Deductions": "(الراتب الأساسي * مضاعف الأداء) + الإضافات - الخصومات",
+    "Reviewed": "تمت المراجعة",
+    "Review Payroll": "مراجعة كشوف المرتبات",
+    " 5% increase from Good, 10% increase from Neutral.": "5٪ زيادة من جيد، 10٪ زيادة من محايد.",
+    "Click Here To See Shifts History": "انقر هنا لمشاهدة سجل الورديات",
+    "Edit Employee": "تعديل بيانات موظف",
+    "Edit Organization Data": "تعديل بيانات الشركة",
+    "Edit Position": "تعديل المنصب",
+    "Grab Yours from Here,": "احصل على اﻵي بي الخاص بك من هنا،",
+    "If the IPs mismatch, it means the employee is registering their attendance": "إذا كانت عناوين اﻵي بي غير متطابقة ، فهذا يعني أن الموظف يسجل حضوره",
+    "Metric step is the increase/decrease between each evaluation stage.": "خطوة المقياس هي الزيادة / النقصان بين كل مرحلة من مراحل التقييم.",
+    "from outside the organization. Thus, the attendance will be discarded.": "من خارج المنظمة، وبالتالي لن يتم احتساب الحضور.",
+    "You can turn this option off on this page.": "يمكنك تعطيل هذا الخيار من هذه الصفحة.",
+    "Modify Metric Data": "تعديل بيانات المقياس",
+    "Normal day shift, small amount of customers expected during this shift.": "وردية يوم عادي، من المتوقع وجود كمية صغيرة من العملاء خلال هذه الوردية.",
+    "Payroll Data": "بيانات كشف الراتب",
+    "Position Data": "بيانات المنصب",
+    "Position Edit": "تعديل المنصب",
+    "Recommended Performance Multiplier": "مُضاعف الأداء الموصى به",
+    "Retirement Plan": "خطة التقاعد",
+    "Shift End Time": "وقت انتهاء الوردية",
+    "There are no negative hours this month.": "لا توجد ساعات متأخرة هذا الشهر.",
+    "This Payroll Has not been reviewed Yet.": "لم تتم مراجعة هذا الكشف بعد.",
+    "Thursday": "الخميس",
+    "You are viewing auto-generated payroll data, which is not final and cannot be approved. Please Review the payroll first, then the option to approve it will appear on this page.": "أنت تستعرض بيانات كشف المرتب التي تم إنشاؤها تلقائيًا ، وهذه البيانات ليست نهائية ولا يمكن الموافقة عليها. يرجى مراجعة الكشف أولاً ، ثم سيظهر خيار الموافقة على هذه الصفحة.",
+    "Ensure your account is using a long, random password to stay secure": "تأكد من أن حسابك يستخدم كلمة مرور طويلة وعشوائية للبقاء آمنًا",
+    "Your email address is unverified": "لم يتم التحقق من عنوان بريدك الإلكتروني",
+    "A new verification link has been sent to your email address": "تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني",
+    "Are you sure You want to ": "هل أنت متأكد أنك تريد",
+    "Error Deleting Request": "خطأ في حذف الطلب",
+    "Reject Request": "رفض الطلب",
+    "Current Shifts": "الورديات الحالية",
+    "Service Unavailable": "الخدمة غير متوفرة",
+    "-5% decrease from Neutral.": "-5٪ انخفاض عن محايد.",
+    "-5% decrease from Poor, -10% decrease from Neutral.": "- انخفاض بنسبة 5٪ من ضعيف ، و -10٪ انخفاض من محايد.",
+    "Add Shift": "أضف وردية",
+    "Error Creating Shift": "خطأ في إنشاء الوردية",
+    "Error Editing Shift": "خطأ في تعديل الوردية",
+    "Initiate A Request": "أنشيء طلب",
+    "Profile": "ملفّي",
+    "Log Out": "تسجيل الخروج",
+    "Shift Details": "تفاصيل الوردية",
+    "Attendable Days": "عدد أيام الحضور",
+    "1. Adding a holidays means the day is off, and the attendance on that day will not be considered.": "1. إضافة يوم عطلة تعني أن هذا اليوم هو عطلة ، ولن يتم أخذ الحضور في ذلك اليوم.",
+    "2. If a holiday overlaps with a weekend, the system will not consider the overlap and count the holiday and the weekend as 2 non-attendable days, not just 1.": "2. إذا تصادف وجود إجازة مع عطلة نهاية الأسبوع، فسيتم احتساب العطلة وعطلة نهاية الأسبوع كيومين إجازة ليس لهم حضور، وليس يوم واحد فقط.",
+    "and make sure you are at your organization while setting this value, otherwise, all employee attendances will be rejected even if they are inside the organization.": "وتأكد من أنك في مؤسستك أثناء تعيين هذه القيمة، وإلا فسيتم رفض جميع حضور الموظفين حتى لو كانوا داخل المنظمة.",
+    "Attendance Taken Today! 🎉": "تم أخذ الحضور اليوم! 🎉",
+    "Changing timezone in production can cause unexepected behavior in the attendance system": "تغير المنطقة الزمنية أثناء عمل البرنامج قد يتسبب في سلوك غير متوقع بخصوص الحضور والإنصراف",
+    "Please revise the attendance list of the current week after changing the timezone": "من فضلك، راجع بيانات الحضور لهذا الأسبوع إذا قمت بتعديل المنطقة الزمنية",
+    "✅ Means there this page has registered attendances recorded, and this record's attendance has been fully taken by employee (complete attendance)": "✅ يعني أن هذه الصفحة فيها حضورًا مسجلًا ، وأن هذا الحضور المسجل أمامه علامة الصح قد أٌخذت بشكل كامل من قِبل الموظف (حضور كامل)",
+    "✍️ Means there this page has registered attendances recorded, and this record has been taken by employee, but hasn't signed off yet (incomplete attendance)": "✍️ يعني أن هذه الصفحة فيها حضورًا مسجلًا ، وأن هذا الحضور المسجل أمامه علامة اليد والقلم يحتوي فقط على تاريخ تسجيل الحضور ولا يحتوي على تاريخ الخروج (حضور غير مكتمل)",
+    "Modify Position Data": "تعديل بيانات المنصب",
+    "*Note: Metrics created before the generation of this payroll will not be visible.": "* ملحوظة: لن تظهر المقاييس التي تم أنشاؤها بعد صدور هذا الكشف.",
+    "Some employees have taken their attendances here while others did not. Any changes you make in this page will overwrite the records here. <br />n'+\n'                                Records with the sign ⚠️ denotes that this employee's attendance was NOT taken.<br />n'+\n'                                Records with the sign ✍️ denotes that this employee has taken their attendance but hasn't signed off yet (incomplete attendance).<br />n'+\n'                                Records with the sign ✅ denotes that this employee has taken their attendance and has signed off (complete attendance).<br />": "تم تسجيل حضور بعض الموظفين هنا بينما لم يفعل الآخرون. أي تغييرات تجريها في هذه الصفحة ستعدل على سجلات هنا. <br />  n '+' تشير السجلات ذات العلامة ⚠️ إلى أن حضور هذا الموظف لم يتم تسجيله. <br />  n '+' تشير السجلات التي تحتوي على العلامة ✍️ إلى أن هذا الموظف قد قام بالحضور ولكنه لم يوقع الخروج بعد (الحضور غير مكتمل). <br />  n '+' السجلات التي تحمل العلامة ✅ تشير إلى أن هذا الموظف قد أخذ الحضور ووقع (الحضور الكامل). <br />",
+    "the multiplier value increases or decreases affecting the entire payroll's total amount.": "قيمة المضاعف تزيد أو تنقص، وهذا سيؤثر على القيمة النهائية للمرتب.",
+    "Current Employees": "الموظفين الحاليين",
+    "This branch has :n employee. Are you sure?": "هذا الفرع مرتبط به :n موظف. هل أنت متأكد؟",
+    "This shift has :n employee. Are you sure?": "هذه الوردية مرتبط بها :n موظف. هل أنت متأكد؟",
+    "This department has :n employee. Are you sure?": "هذا القسم مرتبط به :n موظف. هل أنت متأكد؟",
+    "This position has :n employee. Are you sure?": "هذه المنصب مرتبط به :n موظف. هل أنت متأكد؟",
+    "Not Assigned": "غير مُعيّن",
+    "Showing": "يظهر اﻵن",
+    "Records": "سجل",
+    "Approve Payroll": "قبول الكشف",
+    "Add a Calendar Item": "أضف عنصر إلى التقويم",
+    "All Employees": "جميع الموظفين",
+    "Add An Employee": "أضف موظف",
+    "My Profile": "ملفّي",
+    "Globals": "بيانات المنظمة",
+    "All Requests": "جميع الطلبات",
+    "My Requests": "طلباتي",
+    "My Dashboard": "لوحة القيادة",
+    "Organization": "المنظمة",
+    "Error Taking Attendance": "خطأ في أخذ الحضور",
+    "Attendance Taken Successfully": "تم أخذ الحضور بنجاح",
+    "Error Deleting Attendance": "خطأ في حذف الحضور",
+    "Attendance Removed!": "تم حذف الحضور بنجاح!",
+    "Error Creating Branch": "خطأ في حذف الفرع",
+    "Branch Created Successfully": "تمت إضافة الفرع بنجاح",
+    "Error Editing Branch": "خطأ في تعديل الفرع",
+    "Branch Edited Successfully": "تم تعديل الفرع بنجاح",
+    "Branch Removed!": "تم حذف الفرع بنجاح!",
+    "Error Creating Calendar Item": "خطأ في إنشاء عنصر التقويم",
+    "Calendar Item Stored Successfully": "تم حفظ عنصر التقويم بنجاح",
+    "[ :type ] :name": "[ :type ] :name",
+    "Approved Leave": "طلب إجازة مقبول",
+    "Error Updating Calendar Item": "خطأ في تحديث عنصر التقويم",
+    "Calendar Item Updated Successfully": "تم تعديل عنصر التقويم بنجاح",
+    "From Date": "من تاريخ",
+    "To Date": "إلى تاريخ",
+    "Error Deleting Item": "خطأ في حذف العنصر",
+    "Item Deleted!": "تم حذف العنصر بنجاح!",
+    "st": " ",
+    "nd": " ",
+    "rd": " ",
+    "th": " ",
+    "Sign in": "تسجيل الحضور",
+    "Sign off": "تسجيل الرحيل",
+    "Confirm :signType for attendance for :today?": "تأكيد :signType ليوم :today؟",
+    "1. Attendance for non-remote employees can only be taken from inside the organization.": "1. تسجيل الحضور للموظفين غير العاملين عن بٌعد لا يمكن أن يتم إلا من داخل المنظمة.",
+    "2. You need to register sign-off here again before leaving, otherwise, your attendance will not be accounted.": "تحتاج إلى تسجيل الخروج من هنا قبل الإنصراف، وإلا فلن يتم احتساب حضورك.",
+    "Confirm": "تأكيد",
+    "Cancel": "إلغاء",
+    "Attendance Error": "خطأ في تسجيل الحضور",
+    "IP Error": "خطأ في اﻵي بي",
+    "Authorization Error": "خطأ في التصريح",
+    "Today is OFF!": "اليوم إجازة!",
+    "Error": "خطأ",
+    "Something went wrong.": "هناك خطأ ما.",
+    "Please contact your administrator of this error": "من فضلك تواصل مع المسئول لإصلاح هذا الخطأ",
+    "Action Registerd": "تم تسجيل الإجراء بنجاح",
+    "Don't forget to come here and sign-off before you leave so that the attendance gets registered!": "لا تنس أن تأتي هنا وتسجل الخروج قبل أن تغادر حتى يتم تسجيل الحضور!",
+    "Error Creating Department": "خطأ في إنشاء القسم",
+    "Department Created Successfully": "تم إنشاء القسم بنجاح",
+    "Error Editing Department": "خطأ في تعديل القسم",
+    "Department Editing Successfully": "تم تعديل القسم بنجاح",
+    "Department Removed!": "تم حذف القسم بنجاح!",
+    "Error Creating Employee": "خطأ في إضافة الموظف",
+    "Employee Created Successfully": "تمت إضافة الموظف بنجاح",
+    "Error Creating Position": "خطأ في إنشاء المنصب",
+    "Error Editing Employee": "خطأ في تعديل بيانات الموظف",
+    "Employee Edited Successfully": "تم تعديل بيانات الموظف بنجاح",
+    "Error Removing Employee": "خطأ في حذف الموظف",
+    "Employee Removed!": "تم حذف الموظف بنجاح!",
+    "Position Created Successfully": "تم إنشاء المنصب بنجاح!",
+    "Bank Account Details": "بيانات الحساب البنكي",
+    "Birthday": "تاريخ الميلاد",
+    "Access Permissions": "مستوى الأذن",
+    "Manages": "يٌدير",
+    "Timezone": "المنطقة الزمنية",
+    "Organization IP Address": "اﻵي بي الخاص بالمنظمة",
+    "[:status]": "[:status]",
+    "Enabled": "مٌفعّل",
+    "Disabled": "غير مٌفعّل",
+    "Absence Limit (Per Year)": "حدّ الغياب (في السنة)",
+    "of the month": "لشهر",
+    "Globals data is central to this application data integrity!": "بيانات المؤسسة مهمة لصحة بيانات هذا التطبيق",
+    "Yes, Confirm!": "نعم، تأكيد!",
+    "Error Editing Globals": "خطأ في تعديل بيانات المنظمة",
+    "Global Data Changed Successfully": "تم تعديل بيانات المنظمة بنجاح",
+    "Error Creating Metric": "خطأ في إنشاء المقياس",
+    "Metric Created Successfully": "تم إنشاء المقياس بنجاح",
+    "Error Updating Metric": "خطأ في تحديث المقياس",
+    "Metric Updated Successfully": "تم تحديث المقياس بنجاح",
+    "Metric Removed!": "تم حذف المقياس بنجاح!",
+    "Are you sure You want to confirm this Payroll?": "هل أنت متأكد أنك تريد تأكيد هذا الكشف؟",
+    "Press Cancel to return to payroll reviewing.": "اضغط إلغاء للعودة إلى مراجعة كشف المرتب.",
+    "Error Reviewing Payroll": "خطأ في مراجعة هذا الكشف",
+    "Payroll Confirmed!": "تمت مراجعة كشف المرتب",
+    "Are you sure You want to change the status of this Payroll?": "هل أنت متأكد أنك تريد تغيير حالة هذا الكشف؟",
+    "Send an Email to the employee with this payroll update.": "أرسل بريد إلكتروني إلى الموظف بشأن تحديث هذا الكشف.",
+    "Error Updating Status": "خطأ في تحديث الحالة",
+    "Status Updated Successfully": "تم تحديث الحالة بنجاح",
+    "Error Editing Position": "خطأ في تعديل المنصب",
+    "Position Edited Successfully": "تم تعديل المنصب بنجاح",
+    "Position Removed!": "تم حذف المنصب بنجاح!",
+    "Are you sure You want to :sth this request?": "هل أنت متأكد من أنك تريد :sth هذا الطلب؟",
+    "(Optional) Provide a reason for rejecting this request:": "(اختياري) قدّم سببًا لرفض هذا الطلب:",
+    "We can't accept this leave this week as Mark and Jose will be off and we will be understaffed.": "لا يمكننا قبول طلب الإجازة هذا الأسبوع لأن أحمد وياسر سيكونون غائبون بالفعل وسيكون هناك نقص في العمالة.",
+    "Request Type": "نوع الطلب",
+    "Request Message": "رسالة الطلب",
+    "Submission Date": "تاريخ الإرسال",
+    "Admin Response": "رد المسئول",
+    "Branch Deleted!": "تم حذف الفرع بنجاح!",
+    "Go Back": "عودة",
+    "Add a Quick Meeting": "إضافة اجتماع سريع",
+    "Admin Tools": "أدوات المسئول",
+    "My Services": "خدماتي",
+    "Holiday": "عطلة",
+    "Meeting": "اجتماع",
+    "Event": "حدث",
+    "Logs": "السجلات",
+    "Activity Log": "سجل النشاط",
+    "Missed": "غائب",
+    "Support": "الدعم",
+    "Edit A Department": "تعديل قسم",
+    "You can turn this option off on this page.": "",
+    "The generated payrolls account for the previous month\\'s work, from day 1 until the end of the previous month.": "",
+    "Notice:": "ملاحظة:",
+    "This Log is automatically cleared every week.": "يتم مسح هذا السجل تلقائياً كل أسبوع",
+    "Log Name": "اسم السجل",
+    "Subject Type": "نوع الموضوع",
+    "Subject ID": "رقم الموضوع التعريفي",
+    "Causer Type": "نوع المٌُسبب",
+    "Causer ID": "رقم المٌسبب التعريفي",
+    "Properties": "الخصائص",
+    "Event Type": "نوع الحدث",
+    "Created At": "أٌنشأ في",
+    "DELETED POSITION": "منصب محذوف",
+    "DELETED SHIFT": "وردية محذوفة",
+    "None": "لا يوجد",
+    "Note: Supports IPv4 Only": "ملحوظة: يدعم IPv4 فقط",
+    "If this app is hosted locally, you can use '192.168.1.*'": "إذا كنت تستضيف هذا التطبيق داخلياً، يمكنك استخدام '192.168.1.*'",
+
+
+    "Updated At": "عٌدّل في"
+
+}
