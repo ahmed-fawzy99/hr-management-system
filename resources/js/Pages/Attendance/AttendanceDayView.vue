@@ -9,12 +9,12 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Card from "@/Components/Card.vue";
 import TrashIcon from "@/Components/Icons/TrashIcon.vue";
 import {__} from "@/Composables/useTranslations.js";
-import {calendar_types} from "@/Composables/useCalendarItemTypes.js";
 import Table from "@/Components/Table/Table.vue";
 import TableBodyHeader from "@/Components/Table/TableBodyHeader.vue";
 import TableBody from "@/Components/Table/TableBody.vue";
 import TableHead from "@/Components/Table/TableHead.vue";
 import TableRow from "@/Components/Table/TableRow.vue";
+import {attendance_types} from "@/Composables/useAttendanceTypes.js";
 
 const props = defineProps({
     attendanceList: Object,
@@ -96,7 +96,7 @@ const destroy = () => {
                             <TableRow v-for="attendance in attendanceList.data" :key="attendance.id">
                                 <TableBodyHeader>{{ attendance.id }}</TableBodyHeader>
                                 <TableBodyHeader >{{ attendance.employee_name }}</TableBodyHeader>
-                                <TableBody>{{ calendar_types[attendance.status] }}</TableBody>
+                                <TableBody>{{ attendance_types[attendance.status] }}</TableBody>
                                 <TableBody>{{ attendance.sign_in_time }}</TableBody>
                                 <TableBody>{{ attendance.sign_off_time ?? __('Haven\'t Sign Off Yet') }}</TableBody>
                                 <TableBody>{{ attendance.notes }}</TableBody>

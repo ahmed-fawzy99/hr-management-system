@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper-c27b6911.js";import{a as t,b as r}from"./app-c200726c.js";const e={name:"HorizontalRule"},a={class:"my-4 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50"};function c(n,s,p,_,i,l){return t(),r("hr",a)}const f=o(e,[["render",c]]);export{f as H};

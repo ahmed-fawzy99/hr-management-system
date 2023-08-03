@@ -1,1 +1,0 @@
-import{a as r,b as s,d as a,e as o,y as n,u as l,s as c}from"./app-c200726c.js";const p={class:"px-6 py-4"},f={__name:"TableBodyAction",props:{href:String},setup(e){return(t,d)=>(r(),s("td",p,[a(l(c),{href:e.href,class:"font-medium text-purple-600 dark:text-purple-500 hover:underline"},{default:o(()=>[n(t.$slots,"default")]),_:3},8,["href"])]))}};export{f as _};
