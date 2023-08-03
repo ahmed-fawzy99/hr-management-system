@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$7BMn8WlpLkUB64fCCCVCvuFbqp4dO34dLL/a7MjMdoITz0FOIOZ.G', // password
         ]);
         $emp = Employee::factory()->create([
-            'name' => 'Super Root',
+            'name' => 'Spicy Leaf',
             'email' => 'spicy@pillow.com',
             'phone' => '01001005001',
             'national_id' => '29904268801155',
