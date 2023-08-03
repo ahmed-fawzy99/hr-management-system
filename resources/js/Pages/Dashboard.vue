@@ -250,7 +250,7 @@ onMounted(() => {
                                         {{ __('Number of Overtime/Undertime Hours (so far).') }}<br/>
                                         {{ __('This value will be accounted for in the payroll, resulting in a reward or a penalty.') }}
                                     </ToolTip>
-                                    {{ employee_stats['hoursDifferenceSoFar'].toFixed(2) + __('h') }}</p>
+                                    {{ employee_stats['hoursDifferenceSoFar'].toFixed(0) + __('h') }}</p>
                                 <ProgressBar class="col-span-3"
                                              :percentage="employee_stats['hoursDifferenceSoFar']"
                                              :text="employee_stats['hoursDifferenceSoFar'] === 0 ? '' :Math.abs(employee_stats['hoursDifferenceSoFar']).toFixed(2) + ' ' + __('Hours') +' ' + (employee_stats['hoursDifferenceSoFar'] > 0 ? __('extra') : __('late'))"

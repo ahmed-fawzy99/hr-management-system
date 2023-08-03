@@ -3,13 +3,17 @@ All-in-one Single-Page-Application to manage employee attendance, leaves, payrol
 and organize your organization's branches and departments.
 
 # Live Demo
-[https://hr-system.ahmeddeghady.com](https://hr-system.ahmeddeghady.com)
+https://hr-system.ahmeddeghady.com
 >Note: The data is reset every 24 hours.
 
-# Video Demo
-Soon
-# Screenshots
+# Video Demo (Arabic)
+https://youtu.be/JE1ihoGc1OQ
 
+# Screenshots
+![Dashboard Light Mode Mode](https://i.imgur.com/bGqyqHi.png)
+![Dashboard Dark Mode](https://i.imgur.com/XxImPfa.png)
+![Employees](https://i.imgur.com/F2yxXUN.png)
+And Much more can be found on the demo.
 # Installation
 This project is built using Laravel 10, Vue 3, and Inertia.JS. 
 
