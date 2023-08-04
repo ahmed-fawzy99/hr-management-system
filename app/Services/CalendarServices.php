@@ -27,18 +27,4 @@ class CalendarServices
         return to_route('calendars.index');
     }
 
-    public function renderCalendarIndexPage($request): \Inertia\Response
-    {
-        if (!isAdmin()) {
-            // Don't expose leave requests to non-admins.
-            $leaveRequests = \App\Models\Request::with('employee')->where('status', 1)->where('employee_id', '=', auth()->user()->id)->get();
-        } else {
-            $leaveRequests = \App\Models\Request::with('employee')->where('status', 1)->get();
-        }
-        return Inertia::render('Calendar/Calendar', [
-            'calendarItems' => Calendar::get(),
-            'leaveRequests' => $leaveRequests,
-        ]);
-    }
-
 }

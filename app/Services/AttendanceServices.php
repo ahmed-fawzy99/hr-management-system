@@ -11,7 +11,8 @@ use Inertia\Inertia;
 
 class AttendanceServices
 {
-    private function validateIP($ip_to_check){
+    private function validateIP($ip_to_check): bool
+    {
         $org_ips = json_decode(Globals::first()->ip);
         foreach ($org_ips as $org_ip){
             if(str_contains($org_ip, '*')) {
@@ -176,81 +177,6 @@ class AttendanceServices
         } else {
             return response()->json(['Error' => 'No Sign in record was found.'], 400);
         }
-    }
-    public function renderIndexPage($request): \Illuminate\Http\JsonResponse|\Inertia\Response
-    {
-        $request->validate([
-            'term' => 'nullable|date_format:Y-m-d',
-        ]);
-
-        $dateParam = $request->input('term', '');
-
-        if ($dateParam) {
-            $date = Carbon::createFromFormat('Y-m-d', $dateParam)->startOfDay();
-            if ($date->isAfter(Carbon::today())) {
-                return response()->json(['Error' => 'Date cannot be in the future. Go back and choose a date before today.']);
-            }
-            $date = $date->toDateString();
-        } else {
-            $date = '';
-        }
-
-        $attendanceList = Attendance::select('date',
-            DB::raw('COUNT(CASE WHEN status IN (\'late\', \'on_time\') THEN 1 END) as attended_count'),
-            DB::raw('COUNT(CASE WHEN status = \'on_time\' THEN 1 END) as on_time_count'),
-            DB::raw('COUNT(CASE WHEN status = \'late\' THEN 1 END) as late_count'),
-            DB::raw('COUNT(CASE WHEN status = \'missed\' THEN 1 END) as missed_count')
-        )->groupBy('date')->orderByDesc('date');
-
-        if ($date) {
-            $attendanceList->where('date', '=', $date);
-        }
-
-        return Inertia::render('Attendance/Attendances', [
-            "attendanceList" => $attendanceList->paginate(config('constants.data.pagination_count')),
-            "dateParam" => $date,
-        ]);
-    }
-
-
-    public function renderCreatePage($request): \Illuminate\Http\JsonResponse|\Inertia\Response
-    {
-        if ($request->term) {
-            $request->validate([
-                'term' => 'required|date_format:Y-m-d',
-            ]);
-            $date = Carbon::createFromFormat('Y-m-d', urldecode($request->term))->startOfDay();
-            if ($date->isAfter(Carbon::today())) {
-                return response()->json(['message' => 'Date cannot be in the future. Go back and choose a date before today.']);
-            }
-            $date = $date->toDateString();
-        } else {
-            $date = Carbon::today()->toDateString();
-        }
-
-        $attendanceList = Attendance::with('employee:employees.id,name')->where('date', $date)->orderBy('id')->get();
-
-        $commonServices = new CommonServices();
-        $attendable = !$commonServices->isDayOff($date);
-
-        return Inertia::render('Attendance/AttendanceCreate', [
-            "dateParam" => $request->term ?? Carbon::today()->toDateString(),
-            "employees" => Employee::select(['id', 'name'])->where('hired_on', '<=', $date)->orderBy('id')->get(),
-            "attendances" => $attendanceList,
-            "attendable" => $attendable,
-        ]);
-    }
-
-    public function renderDayAttendancePage($day){
-        $attendanceList = Attendance::where('date', $day)
-            ->join('employees', 'attendances.employee_id', '=', 'employees.id')
-            ->select(['attendances.id', 'employees.name as employee_name', 'attendances.status', 'attendances.sign_in_time', 'attendances.sign_off_time', 'attendances.notes'])
-            ->orderByDesc('attendances.created_at')->paginate(config('constants.data.pagination_count'));
-
-        return Inertia::render('Attendance/AttendanceDayView', [
-            "attendanceList" => $attendanceList,
-            "day" => $day
-        ]);
     }
 
 }

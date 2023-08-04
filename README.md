@@ -105,7 +105,7 @@ If you are going to host the project on a server, further steps are required. Pl
 # Instructions
 - After you log in for the first time, head to the globals page and fill in your organization's data and settings. This data is integral into the system's functionality.
 - You might need to have a look at validation rules for national ids. The current rule is generic as countries have very different systems. You can change it inside `app/Services/ValidationServices.php` at `validateEmployeeCreationDetails` and `validateEmployeeUpdateDetails`.
-- When you create a new employee, the default password is `SoftKittyWarmKittyLittleBallOfFurr`.
+- When you create a new employee, an automatic password will be generated emailed to them. They can change it later.
 - To add more languages, run this command in the app root directory: `php artisan langscanner YOUR_LANG` (Courtesy of [druc's laravel-langscanner](https://github.com/druc/laravel-langscanner)). For example, to add Deutsch, run `php artisan langscanner de`. This will generate a JSON file in root/lang/de.json with all the app strings. After you translate the file, add an entry in the language selector for your new language.
 
 

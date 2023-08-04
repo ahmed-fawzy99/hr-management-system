@@ -7,22 +7,34 @@ use App\Services\ValidationServices;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-/*
- * IMPORTANT NOTE:
- * This controller naming is causing a havoc. Illuminate\Http\Request is the request class that is used
- * to handle all requests in Laravel. While App\Models\Request is the model class that is used to handle
- * Employee leave requests and such. So, if you want to refer to the model class, you have to use the full namespace
- * which is \App\Models\Request.
- */
 
+// Using \App\Models\Request instead of Request because Request is a class in Illuminate\Http\Request
 class RequestController extends Controller
 {
+    protected RequestServices $requestServices;
+    protected ValidationServices $validationServices;
+    public function __construct()
+    {
+        $this->requestServices = new RequestServices;
+        $this->validationServices = new ValidationServices;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index(RequestServices $requestServices, Request $request)
+    public function index()
     {
-        return $requestServices->renderIndexPage();
+        $requests = \App\Models\Request::join('employees', 'requests.employee_id', '=', 'employees.id')
+            ->select(['requests.id', 'employees.name as employee_name', 'requests.type', 'requests.start_date',
+                'requests.end_date', 'requests.status', 'requests.is_seen']);
+
+        if (!isAdmin()) {
+            $requests->where('requests.employee_id', auth()->user()->id);
+        }
+        return Inertia::render('Request/Requests', [
+            'requests' => $requests->orderBy('requests.status')
+                ->paginate(config('constants.data.pagination_count')),
+        ]);
     }
 
     /**
@@ -38,32 +50,37 @@ class RequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, ValidationServices $validationServices, RequestServices $requestServices)
+    public function store(Request $request)
     {
-        $req = $validationServices->validateRequestCreationDetails($request);
-        return $requestServices->createRequest($req, $request);
+        $req = $this->validationServices->validateRequestCreationDetails($request);
+        return $this->requestServices->createRequest($req, $request);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id, RequestServices $requestServices, Request $request)
+    public function show(string $id)
     {
-        return $requestServices->renderShowPage($id);
+        $request = \App\Models\Request::with('employee')->findOrFail($id);
+        authenticateIfNotAdmin(auth()->user()->id, $request->employee_id);
+
+        if (auth()->user()->id == $request->employee_id && $request->status != 'Pending') {
+            // Mark the request as seen by the employee if it was approved or rejected.
+            // This will be used to display the number of unseen requests in the sidebar of user dashboard.
+            $request->update(['is_seen' => true]);
+        }
+        return Inertia::render('Request/RequestView', [
+            'request' => $request,
+        ]);
     }
 
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id){}
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id, RequestServices $requestServices, ValidationServices $validationServices)
+    public function update(Request $request, string $id)
     {
-        $requestServices->updateRequest($request, $id);
+        $this->requestServices->updateRequest($request, $id);
     }
 
     /**

@@ -11,12 +11,31 @@ use Inertia\Inertia;
 
 class BranchController extends Controller
 {
+    protected BranchServices $branchServices;
+    protected ValidationServices $validationServices;
+    public function __construct()
+    {
+        $this->branchServices = new BranchServices;
+        $this->validationServices = new ValidationServices;
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, BranchServices $branchServices)
+    public function index(Request $request)
     {
-        return $branchServices->renderIndexPage($request);
+        return Inertia::render('Branch/Branches', [
+            'branches' => Branch::when($request->term, function ($query, $term) {
+                $query->where('id', 'ILIKE', '%' . $term . '%')
+                    ->orWhere('name', 'ILIKE', '%' . $term . '%')
+                    ->orWhere('phone', 'ILIKE', '%' . $term . '%')
+                    ->orWhere('email', 'ILIKE', '%' . $term . '%')
+                    ->orWhere('address', 'ILIKE', '%' . $term . '%');
+            })
+                ->select(['id', 'name', 'phone', 'email', 'address'])
+                ->withCount('employees')
+                ->orderBy('id')
+                ->paginate(config('constants.data.pagination_count')),
+        ]);
     }
 
     /**
@@ -32,18 +51,33 @@ class BranchController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, ValidationServices $validationServices, BranchServices $branchServices)
+    public function store(Request $request)
     {
-        $res = $validationServices->validateBranchCreationDetails($request);
-        return $branchServices->createBranch($res);
+        $res = $this->validationServices->validateBranchCreationDetails($request);
+        return $this->branchServices->createBranch($res);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id, Request $request, BranchServices $branchServices)
+    public function show(string $id, Request $request)
     {
-        return $branchServices->renderShowPage($id, $request);
+        $branch = Branch::withCount('employees')->findOrFail($id);
+        $employees = $branch->employees()->where(function ($query) use ($request) {
+            $query->where('employees.normalized_name', 'ILIKE', '%' . normalizeArabic($request->term) . '%')
+                ->orWhere('employees.email', 'ILIKE', '%' . $request->term . '%')
+                ->orWhere('employees.id', 'ILIKE', '%' . $request->term . '%')
+                ->orWhere('employees.phone', 'ILIKE', '%' . $request->term . '%')
+                ->orWhere('employees.national_id', 'ILIKE', '%' . $request->term . '%');
+        })
+            ->orderBy('employees.id')
+            ->paginate(config('constants.data.pagination_count'), ['employees.id', 'employees.name', 'employees.phone', 'employees.email', 'employees.national_id']);
+
+        return Inertia::render('Branch/BranchView', [
+            'branch' => Branch::withCount('employees')->findOrFail($branch->id),
+            'employees' => $employees,
+            'manager' => $branch->manager()->exists() ? $branch->manager()->select(['employees.id', 'employees.name'])->first() : '',
+        ]);
     }
 
     /**
@@ -60,10 +94,10 @@ class BranchController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id, ValidationServices $validationServices, BranchServices $branchServices)
+    public function update(Request $request, string $id)
     {
-        $res = $validationServices->validateBranchUpdateDetails($request, $id);
-        return $branchServices->updateBranch($res, $id);
+        $res = $this->validationServices->validateBranchUpdateDetails($request, $id);
+        return $this->branchServices->updateBranch($res, $id);
     }
 
     /**

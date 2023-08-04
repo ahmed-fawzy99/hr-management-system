@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use App\Rules\CustomIPValidator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Propaganistas\LaravelPhone\Rules\Phone;
 use Intervention\Validation\Rules\Iban;
@@ -17,11 +18,6 @@ Class ValidationServices extends Controller {
         'phone' => 'This phone number format is not valid.',
         'currency' => 'There seems to be an issue with your selected currency. Have you selected one?',
         'role' => 'Invalid Role',
-/*
-        'phone.unique' => 'This phone number is already registered with another branch.',
- Multiple branches might
- have the same number manager, I think.. no need to make it unique.
-*/
     ];
 
     protected array $roles = [
@@ -355,6 +351,26 @@ Class ValidationServices extends Controller {
             'weight' => ['required','numeric', 'min:0', 'max:10'],
             'step' => ['required','numeric', 'min:0.1', 'max:100'],
         ], $this->validationMessages);
+    }
+    public function validateDayAttendanceDateParameter($day)
+    {
+        $validator = Validator::make(['dateParameter' => $day], [
+            'dateParameter' => 'required|string|date_format:Y-m-d',
+        ]);
+        if ($validator->fails())
+            return response()->json([$validator->errors()]);
+
+        return $validator->validated()['dateParameter'];
+    }
+
+    public function validatePayrollIndexParams($request)
+    {
+        $request->validate([
+            'date' => ['nullable', 'array', 'size:2'],
+            'date.month' => ['nullable', 'integer', 'min:0', 'max:11'],
+            'date.year' => ['nullable', 'integer', 'min:1453', 'max:2999'],
+            'status' => ['nullable', 'string', 'in:all,pending,reviewed,paid'],
+        ]);
     }
 
 }

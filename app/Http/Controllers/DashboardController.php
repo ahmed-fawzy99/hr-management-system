@@ -9,14 +9,13 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    //
+
     public function index()
     {
         $commonServices = new CommonServices();
         $isTodayOff = $commonServices->isTodayOff();
 
         $attendanceChecker = auth()->user()->attendances()->where('date', Carbon::today()->toDateString())->first();
-
 
         if (is_null($attendanceChecker)) {
             $attendanceStatus = 0;

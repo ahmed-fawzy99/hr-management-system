@@ -59,35 +59,5 @@ class ShiftServices
         return to_route('shifts.index');
     }
 
-    public function renderIndexPage(): \Inertia\Response
-    {
-        return Inertia::render('Shift/Shifts', [
-            'shifts' => Shift::
-            select(['id', 'name', 'start_time', 'end_time', 'shift_payment_multiplier', 'description'])
-                ->withCount('employees')
-                ->orderBy('id')
-                ->paginate(config('constants.data.pagination_count')),
-        ]);
-    }
-    public function renderShowPage($id, $request): \Inertia\Response
-    {
-        $shift = Shift::withCount("employees")->findOrFail($id);
-        $employees = $shift->employees()
-            ->where(function ($query) use ($request) {
-                $query->where('employees.name', 'ILIKE', '%' . $request->term . '%')
-                    ->orWhere('employees.email', 'ILIKE', '%' . $request->term . '%')
-                    ->orWhere('employees.id', 'ILIKE', '%' . $request->term . '%')
-                    ->orWhere('employees.phone', 'ILIKE', '%' . $request->term . '%')
-                    ->orWhere('employees.national_id', 'ILIKE', '%' . $request->term . '%');
-            })
-            ->orderBy('employees.id')
-            ->paginate(config('constants.data.pagination_count'), ['employees.id', 'employees.name', 'employees.phone', 'employees.email', 'employees.national_id']);
-
-        return Inertia::render('Shift/ShiftView', [
-            'shift' => $shift,
-            'employees' => $employees,
-            'searchPar' => $request->term,
-        ]);
-    }
 
 }

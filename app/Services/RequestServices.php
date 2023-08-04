@@ -43,34 +43,5 @@ class RequestServices
         Mail::to($empReq->employee->email)->send(new RequestStatusUpdated($empReq));
     }
 
-    public function renderIndexPage(): \Inertia\Response
-    {
-        $requests = \App\Models\Request::join('employees', 'requests.employee_id', '=', 'employees.id')
-            ->select(['requests.id', 'employees.name as employee_name', 'requests.type', 'requests.start_date',
-                'requests.end_date', 'requests.status', 'requests.is_seen']);
-
-        if (!isAdmin()) {
-            $requests->where('requests.employee_id', auth()->user()->id);
-        }
-        return Inertia::render('Request/Requests', [
-            'requests' => $requests->orderBy('requests.status')
-                ->paginate(config('constants.data.pagination_count')),
-        ]);
-    }
-    public function renderShowPage($id): \Inertia\Response
-    {
-        $request = \App\Models\Request::with('employee')->findOrFail($id);
-        authenticateIfNotAdmin(auth()->user()->id, $request->employee_id);
-
-        if (auth()->user()->id == $request->employee_id && $request->status != 'Pending') {
-            // Mark the request as seen by the employee if it was approved or rejected.
-            // This will be used to display the number of unseen requests in the sidebar of user dashboard.
-            $request->update(['is_seen' => true]);
-        }
-
-        return Inertia::render('Request/RequestView', [
-            'request' => $request,
-        ]);
-    }
 
 }

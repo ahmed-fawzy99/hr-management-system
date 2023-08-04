@@ -2,18 +2,14 @@
 
 namespace App\Services;
 
+use App\Mail\EmployeeRegisterationCredentials;
 use App\Models\ArchivedEmployee;
-use App\Models\Branch;
-use App\Models\Department;
 use App\Models\Employee;
 use App\Models\EmployeePosition;
 use App\Models\EmployeeSalary;
 use App\Models\EmployeeShift;
-use App\Models\Position;
-use App\Models\Shift;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\Mail;
 
 class EmployeeServices
 {
@@ -22,7 +18,8 @@ class EmployeeServices
         if (is_null($res['hired_on'])) {
             $res['hired_on'] = now()->format('Y-m-d');
         }
-        $res['password'] = bcrypt('SoftKittyWarmKittyLittleBallOfFurr');
+        $password = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 8);
+        $res['password'] = bcrypt($password);
         $emp = Employee::create([
             'name' => $res['name'],
             'email' => $res['email'],
@@ -68,6 +65,13 @@ class EmployeeServices
 
         // Assign Role
         $emp->assignRole($res['role']);
+
+        // Send Email to user with credentials
+        Mail::to($emp->email)->send(new EmployeeRegisterationCredentials([
+            'name' => $emp->name,
+            'email' => $emp->email,
+            'password' => $password,
+        ]));
 
         return to_route('employees.show', ['employee' => $emp->id]);
     }
@@ -166,112 +170,4 @@ class EmployeeServices
 
         return to_route('employees.index');
     }
-
-    public function renderFindPage($request): \Inertia\Response
-    {
-        return Inertia::render('Employee/EmployeeFind', [
-            'employees' => Employee::when($request->term, function ($query, $term) {
-                $query
-                    ->where('name', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('id', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('email', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('phone', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('national_id', 'ILIKE', '%' . $term . '%');
-            })->get(),
-        ]);
-    }
-    public function renderEditPage($id): \Inertia\Response
-    {
-        return Inertia::render('Employee/EmployeeEdit', [
-            'employee' => Employee::with("salaries", "roles", 'employeeShifts.shift', 'employeePositions.position')
-                ->leftjoin('departments', 'employees.department_id',
-                    '=', 'departments.id')
-                ->leftJoin('branches', 'employees.branch_id', '=', 'branches.id')
-                ->where('employees.id', $id)
-                ->select('employees.id', 'employees.name', 'employees.phone', 'employees.national_id', 'employees.email',
-                    'employees.address', 'employees.bank_acc_no', 'employees.hired_on', 'departments.name as department_name',
-                    'departments.id as department_id', 'branches.id as branch_id', 'branches.name as branch_name', 'employees.is_remote')
-                ->first(),
-            'departments' => Department::select(['id', 'name'])->get(),
-            'branches' => Branch::select(['id', 'name'])->get(),
-            'positions' => Position::select(['id', 'name'])->get(),
-            'roles' => DB::select('SELECT name FROM roles'),
-            'shifts' => Shift::get(),
-        ]);
-    }
-    public function renderShowPage($id): \Inertia\Response
-    {
-        return Inertia::render('Employee/EmployeeView', [
-            'employee' => Employee::with("salaries", "roles", 'employeeShifts.shift', 'employeePositions.position', 'manages')
-                ->leftjoin('departments', 'employees.department_id',
-                    '=', 'departments.id')
-                ->leftJoin('branches', 'employees.branch_id', '=', 'branches.id')
-                ->where('employees.id', $id)
-                ->select('employees.id', 'employees.name', 'employees.phone', 'employees.national_id', 'employees.email',
-                    'employees.address', 'employees.bank_acc_no', 'departments.name as department_name',
-                    'departments.id as department_id', 'branches.id as branch_id', 'branches.name as branch_name',
-                    'employees.hired_on', 'employees.is_remote')
-                ->first(),
-        ]);
-    }
-
-    public function renderCreatePage(): \Inertia\Response
-    {
-        return Inertia::render('Employee/EmployeeCreate', [
-            'departments' => Department::select(['id', 'name'])->get(),
-            'branches' => Branch::select(['id', 'name'])->get(),
-            'positions' => Position::select(['id', 'name'])->get(),
-            'roles' => DB::select('SELECT name FROM roles'),
-            'shifts' => Shift::get(),
-        ]);
-    }
-
-    public function renderIndexPage($request): \Inertia\Response
-    {
-        $sortDir = 'asc';
-        if ($request->has('sort')) {
-            $request->validate([
-                'sort' => 'in:id,name',
-                'sort_dir' => 'required|boolean',
-            ]);
-            $sortDir = $request->sort_dir ? 'asc' : 'desc';
-        }
-
-
-        return Inertia::render('Employee/Employees', [
-            'employees' => Employee::when($request->term, function ($query, $term) {
-                $query->where('normalized_name', 'ILIKE', '%' . normalizeArabic($term) . '%')
-                    ->orWhere('email', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('id', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('phone', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('national_id', 'ILIKE', '%' . $term . '%');
-            })->orderBy($request->sort ?? 'id', $sortDir)->select(['id', 'name', 'email', 'phone', 'national_id'])
-                ->paginate(config('constants.data.pagination_count')),
-        ]);
-    }
-
-    public function renderArchivedIndexPage($request): \Inertia\Response
-    {
-        $sortDir = 'asc';
-        if ($request->has('sort')) {
-            $request->validate([
-                'sort' => 'in:id,name',
-                'sort_dir' => 'required|boolean',
-            ]);
-            $sortDir = $request->sort_dir ? 'asc' : 'desc';
-        }
-
-        return Inertia::render('Employee/ArchievedEmployees', [
-            'employees' => ArchivedEmployee::when($request->term, function ($query, $term) {
-                $query->where('name', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('email', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('id', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('phone', 'ILIKE', '%' . $term . '%')
-                    ->orWhere('national_id', 'ILIKE', '%' . $term . '%');
-            })->orderBy($request->sort ?? 'released_on', $sortDir)
-                ->select(['id', 'name', 'email', 'phone', 'national_id', 'hired_on', 'released_on'])
-                ->paginate(config('constants.data.pagination_count')),
-        ]);
-    }
-
 }

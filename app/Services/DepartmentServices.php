@@ -38,39 +38,4 @@ class DepartmentServices
         return to_route('departments.show', ['department' => $department->id]);
     }
 
-    public function renderIndexPage($request): \Inertia\Response
-    {
-        return Inertia::render('Department/Departments', [
-            'departments' => Department::when($request->term, function ($query, $term) {
-                $query->where('name', 'ILIKE', '%' . $term . '%');
-            })
-                ->select(['id', 'name'])
-                ->withCount('employees')
-                ->orderBy('id')
-                ->paginate(config('constants.data.pagination_count')),
-        ]);
-    }
-    public function renderShowPage($id, $request): \Inertia\Response
-    {
-        $department = Department::withCount("employees")->findOrFail($id);
-        $employees = $department->employees()
-            ->where(function ($query) use ($request) {
-                $query->where('employees.normalized_name', 'ILIKE', '%' . normalizeArabic($request->term) . '%')
-                    ->orWhere('employees.email', 'ILIKE', '%' . $request->term . '%')
-                    ->orWhere('employees.id', 'ILIKE', '%' . $request->term . '%')
-                    ->orWhere('employees.phone', 'ILIKE', '%' . $request->term . '%')
-                    ->orWhere('employees.national_id', 'ILIKE', '%' . $request->term . '%');
-            })
-            ->orderBy('employees.id')
-            ->paginate(config('constants.data.pagination_count'),
-                ['employees.id', 'employees.name', 'employees.phone', 'employees.email', 'employees.national_id']);
-
-        return Inertia::render('Department/DepartmentView', [
-            'department' => $department,
-            'employees' => $employees,
-            'manager' => $department->manager()->exists() ? $department->manager()->select(['employees.id', 'employees.name'])->first() : '',
-            'searchPar' => $request->term,
-        ]);
-    }
-
 }

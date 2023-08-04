@@ -10,12 +10,28 @@ use Inertia\Inertia;
 
 class CalendarController extends Controller
 {
+    protected CalendarServices $calendarServices;
+    protected ValidationServices $validationServices;
+    public function __construct()
+    {
+        $this->calendarServices = new CalendarServices;
+        $this->validationServices = new ValidationServices;
+    }
     /**
      * Display a listing of the resource.
      */
-    public function calendarIndex(Request $request, CalendarServices $calendarServices)
+    public function calendarIndex()
     {
-        return $calendarServices->renderCalendarIndexPage($request);
+        if (!isAdmin()) {
+            // Don't expose leave requests to non-admins other than the employee's.
+            $leaveRequests = \App\Models\Request::with('employee')->where('status', 1)->where('employee_id', '=', auth()->user()->id)->get();
+        } else {
+            $leaveRequests = \App\Models\Request::with('employee')->where('status', 1)->get();
+        }
+        return Inertia::render('Calendar/Calendar', [
+            'calendarItems' => Calendar::get(),
+            'leaveRequests' => $leaveRequests,
+        ]);
     }
 
     public function index()
@@ -39,10 +55,10 @@ class CalendarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, ValidationServices $validationServices, CalendarServices $calendarServices)
+    public function store(Request $request)
     {
-        $res = $validationServices->validateCalendarItemCreationDetails($request);
-        $calendarServices->createCalendarItem($res);
+        $res = $this->validationServices->validateCalendarItemCreationDetails($request);
+        $this->calendarServices->createCalendarItem($res);
     }
 
     /**
@@ -69,10 +85,10 @@ class CalendarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id, ValidationServices $validationServices, CalendarServices $calendarServices)
+    public function update(Request $request, string $id)
     {
-        $res = $validationServices->validateCalendarItemCreationDetails($request);
-        return $calendarServices->updateCalendarItem($res, $id);
+        $res = $this->validationServices->validateCalendarItemCreationDetails($request);
+        return $this->calendarServices->updateCalendarItem($res, $id);
     }
 
     /**

@@ -10,13 +10,26 @@ use Inertia\Inertia;
 
 class ShiftController extends Controller
 {
+    protected ShiftServices $shiftServices;
+    protected ValidationServices $validationServices;
+    public function __construct()
+    {
+        $this->shiftServices = new ShiftServices;
+        $this->validationServices = new ValidationServices;
+    }
 
     /**
      * Display a listing of the resource.
      */
-    public function index(ShiftServices $shiftServices)
+    public function index()
     {
-        return $shiftServices->renderIndexPage();
+        return Inertia::render('Shift/Shifts', [
+            'shifts' => Shift::
+            select(['id', 'name', 'start_time', 'end_time', 'shift_payment_multiplier', 'description'])
+                ->withCount('employees')
+                ->orderBy('id')
+                ->paginate(config('constants.data.pagination_count')),
+        ]);
     }
 
     /**
@@ -30,10 +43,10 @@ class ShiftController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, ShiftServices $shiftServices, ValidationServices $validationServices)
+    public function store(Request $request)
     {
-        $shift = $validationServices->validateShiftCreationDetails($request);
-        $shiftServices->createShift($request, $shift);
+        $shift = $this->validationServices->validateShiftCreationDetails($request);
+        $this->shiftServices->createShift($request, $shift);
 
     }
 
@@ -42,9 +55,25 @@ class ShiftController extends Controller
      */
 
 
-    public function show(string $id, Request $request, ShiftServices $shiftServices)
+    public function show(string $id, Request $request)
     {
-        return $shiftServices->renderShowPage($id, $request);
+        $shift = Shift::withCount("employees")->findOrFail($id);
+        $employees = $shift->employees()
+            ->where(function ($query) use ($request) {
+                $query->where('employees.name', 'ILIKE', '%' . $request->term . '%')
+                    ->orWhere('employees.email', 'ILIKE', '%' . $request->term . '%')
+                    ->orWhere('employees.id', 'ILIKE', '%' . $request->term . '%')
+                    ->orWhere('employees.phone', 'ILIKE', '%' . $request->term . '%')
+                    ->orWhere('employees.national_id', 'ILIKE', '%' . $request->term . '%');
+            })
+            ->orderBy('employees.id')
+            ->paginate(config('constants.data.pagination_count'), ['employees.id', 'employees.name', 'employees.phone', 'employees.email', 'employees.national_id']);
+
+        return Inertia::render('Shift/ShiftView', [
+            'shift' => $shift,
+            'employees' => $employees,
+            'searchPar' => $request->term,
+        ]);
     }
 
     /**
@@ -62,16 +91,16 @@ class ShiftController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id, ShiftServices $shiftServices, ValidationServices $validationServices)
+    public function update(Request $request, string $id)
     {
-        return $shiftServices->updateShift($request, $id, $validationServices);
+        return $this->shiftServices->updateShift($request, $id, $this->validationServices);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id, ShiftServices $shiftServices)
+    public function destroy(string $id)
     {
-        return $shiftServices->deleteShift($id);
+        return $this->shiftServices->deleteShift($id);
     }
 }
