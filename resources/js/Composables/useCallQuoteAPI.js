@@ -8,16 +8,19 @@ export function CallQuoteAPI (quote){
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) {
-                throw new Error('Network response was NOT ok.');
+                throw new Error('API call error.');
             }
             const data = await response.json();
+            quote.value = data[0]; // quote variable in front-end
+
+            // Store the quote and set a timestamp for the last API call, to prevent calling the API more than once per day
+            lastApiCallTimestamp.value = Date.now();
+            localStorage.setItem('lastApiCallTimestamp', lastApiCallTimestamp.value);
             localStorage.setItem('quote', JSON.stringify(data));
-            quote.value = data[0];
         } catch (error) {
-            throw new Error('API call error:', error);
+            throw new Error('Network response was NOT ok:', error);
         }
     }
-
     function shouldFetchData() {
         if (!lastApiCallTimestamp.value) {
             return true; // API has not been called yet
@@ -29,9 +32,6 @@ export function CallQuoteAPI (quote){
 
     if (shouldFetchData()) {
         fetchDataFromAPI();
-        // Store the current timestamp in localStorage
-        lastApiCallTimestamp.value = Date.now();
-        localStorage.setItem('lastApiCallTimestamp', lastApiCallTimestamp.value);
     } else {
         quote.value = JSON.parse(localStorage.getItem('quote'))?.[0];
     }
