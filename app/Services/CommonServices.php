@@ -172,6 +172,7 @@ class CommonServices extends Controller
         ];
     }
 
+    // Expects date to be in YYYY-MM-DD format
     public function isHoliday($date){
         return Calendar::where('type', 'holiday')
             ->where(function ($query) use ($date) {
@@ -187,6 +188,7 @@ class CommonServices extends Controller
             ->exists();
     }
 
+    // Expects date to be in YYYY-MM-DD format
     public function isWeekend($date): bool
     {
         $weekendDays = json_decode(Globals::first()->weekend_off_days);
@@ -194,6 +196,7 @@ class CommonServices extends Controller
         return in_array(strtolower($today), array_map('strtolower', $weekendDays));
     }
 
+    // Expects date to be in YYYY-MM-DD format
     public function isDayOff($date): bool
     {
         return $this->isHoliday($date) || $this->isWeekend($date);

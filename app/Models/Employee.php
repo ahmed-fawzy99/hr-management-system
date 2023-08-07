@@ -229,12 +229,13 @@ class Employee extends Authenticatable
             $totalAttendanceSoFar = (clone $attended)->whereDate('date', '<=', $now)->count();
             $totalAbsentedSoFar = (clone $absented)->whereDate('date', '<=', $now)->count();
         }
-            $actualHours =
-                $monthAttendance->sum(function ($attendance) {
-                    $signInTime = Carbon::parse($attendance->sign_in_time);
-                    $signOffTime = Carbon::parse($attendance->sign_off_time);
-                    return $signInTime->diffInMinutes($signOffTime) / 60;
-                });
+        $actualHours =
+            $monthAttendance->sum(function ($attendance) {
+                $signInTime = Carbon::parse($attendance->sign_in_time);
+                $signOffTime = Carbon::parse($attendance->sign_off_time);
+                return $signInTime->diffInMinutes($signOffTime) / 60;
+            });
+
 
         $shiftHours = $this->activeShiftPeriod();
         $expectedHours = $workingDays * $shiftHours;
