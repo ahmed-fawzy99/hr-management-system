@@ -2,6 +2,10 @@
 All-in-one Single-Page-Application to manage employee attendance, leaves, payrolls,
 and organize your organization's branches and departments.
 
+# Try it Yourself!
+https://ahmaddeghady.online
+> Note: This is a test app. Data is subject to deletion at any time.
+
 # Video Demo (Arabic)
 https://youtu.be/JE1ihoGc1OQ
 
@@ -35,11 +39,11 @@ After that:
  ```
 To generate basic data needed to start the system, we need to run the migrations and starter seeder:
 ```
- php artisan migrate --seeder=StarterSeeder
+ php artisan migrate --seed --seeder=StarterSeeder
 ```
 Alternatively, if you want to populate the application with dummy data so that you can test all functionality, you can run the following command:
 ```
- php artisan migrate --seeder=DatabaseSeeder
+ php artisan migrate --seed --seeder=DatabaseSeeder
 ```
 
 After that, Add this entry in your cron file:
