@@ -23,7 +23,7 @@ class DailyAttendanceHandle
         // This condition is to check if yesterday was a weekend off day
         if (in_array(strtolower($carbon->dayName), json_decode(Globals::first()->weekend_off_days))) {
             logger("Yesterday was a weekend off day, nothing to do in the attendance scheduler");
-            return;
+            Artisan::call('up');
         }
 
         // Mark all the employees who did not sign off as missed
