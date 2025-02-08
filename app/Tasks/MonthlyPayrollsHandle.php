@@ -18,11 +18,13 @@ class MonthlyPayrollsHandle
 
         // Generate Payrolls
         $date = Carbon::now()->toDateString();
-        $employeesCount = Employee::count();
 
-        for ($i = 1; $i <= $employeesCount; $i++) {
-            $employee = Employee::find($i);
-
+        foreach (Emplouee::cursor() as $employee) {
+        
+            if (!$employee) {
+                continue;
+            }
+        
             $payroll = Payroll::create([
                 'employee_id' => $employee->id,
                 'currency' => $employee->salary()[0],
@@ -31,17 +33,19 @@ class MonthlyPayrollsHandle
                 'performance_multiplier' => 1,
                 "due_date" => $date,
             ]);
+        
             Addition::create([
                 'payroll_id' => $payroll->id,
                 "due_date" => $date,
             ]);
+        
             Deduction::create([
                 'payroll_id' => $payroll->id,
                 "due_date" => $date,
             ]);
         }
-
+        
         Artisan::call('up');
-        logger("MonthlyMaintenance Completed");
+        logger("Monthly Maintenance Completed");
     }
 }
