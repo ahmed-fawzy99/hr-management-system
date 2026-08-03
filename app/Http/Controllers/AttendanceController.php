@@ -7,6 +7,7 @@ use App\Models\Employee;
 use App\Services\AttendanceServices;
 use App\Services\CommonServices;
 use App\Services\ValidationServices;
+use App\Http\Requests\AttendanceDayShowRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -105,20 +106,16 @@ class AttendanceController extends Controller
         return $this->attendanceServices->createAttendance($res, $this->commonServices);
     }
 
-    public function dayShow(string $day)
+    public function dayShow(AttendanceDayShowRequest $request, string $day)
     {
-        $date = $this->validationServices->validateDayAttendanceDateParameter($day);
-        if (!is_string($date)) // ERROR
-            return $date; // Error Message
-
-        $attendanceList = Attendance::where('date', $date)
+        $attendanceList = Attendance::where('date', $day)
             ->join('employees', 'attendances.employee_id', '=', 'employees.id')
             ->select(['attendances.id', 'employees.name as employee_name', 'attendances.status', 'attendances.sign_in_time', 'attendances.sign_off_time', 'attendances.notes'])
             ->orderByDesc('attendances.created_at')->paginate(config('constants.data.pagination_count'));
 
         return Inertia::render('Attendance/AttendanceDayView', [
             "attendanceList" => $attendanceList,
-            "day" => $date
+            "day" => $day
         ]);
     }
 
