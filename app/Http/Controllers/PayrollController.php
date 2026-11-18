@@ -77,9 +77,9 @@ class PayrollController extends Controller
      */
     public function show(string $id)
     {
-        authenticateIfNotAdmin(auth()->user()->id, $id);
         $payroll = Payroll::with('employee')->find($id);
         if ($payroll) {
+            authenticateIfNotAdmin(auth()->user()->id, $payroll->employee_id);
             return Inertia::render('Payroll/PayrollView', [
                 'payroll' => $payroll,
             ]);
